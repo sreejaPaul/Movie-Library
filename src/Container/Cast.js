@@ -47,7 +47,7 @@ class Cast extends React.Component{
                 this.state.name.map((elements,i) => {
                     return(
                         
-                        <Link to={"/Cast/"+ this.state.id[i]} className="namestyle" key={elements+i}>
+                        <Link to={"/Movie-Library/Cast/"+ this.state.id[i]} className="namestyle" key={elements+i}>
                             <div className="divstyle" key={this.state.id[i]} >
                                 {
                                 (this.state.profilePath[i] === null) ? 

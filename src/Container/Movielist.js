@@ -77,7 +77,7 @@ const Movielist = ()=>{
                 return(
                 
 
-                        <Link to = {"/MovieDetail/"+ movie.id} style={{textDecoration: "none",color:"inherit"}}>
+                        <Link to = {"/Movie-Library/MovieDetail/"+ movie.id} style={{textDecoration: "none",color:"inherit"}}>
                             <Card 
                                 keys={movie.id} 
                                 imagelinks={process.env.REACT_APP_IMAGE_WIDTH200  + movie.poster_path}

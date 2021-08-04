@@ -50,7 +50,7 @@ const Genredetail = ()=>{
            
             <div>
                 <h1>{"Popular in " + genrename}</h1>
-                <Link to="/" style={{textDecoration:"none",color:"inherit"}}>
+                <Link to="/Movie-Library" style={{textDecoration:"none",color:"inherit"}}>
                     <button style={{border:"none",backgroundColor:"white",float:"right"}}>
                         <FontAwesomeIcon icon={faHome} size="2x" id="homebutton"/>
                     </button>
@@ -60,7 +60,7 @@ const Genredetail = ()=>{
                     return(
                     
 
-                            <Link to = {"/MovieDetail/"+ movie.id} style={{textDecoration: "none",color:"inherit"}} key={movie.id} >
+                            <Link to = {"/Movie-Library/MovieDetail/"+ movie.id} style={{textDecoration: "none",color:"inherit"}} key={movie.id} >
                                 <Card 
                                     key={movie.id} 
                                     imagelinks={process.env.REACT_APP_IMAGE_WIDTH200  + movie.poster_path}

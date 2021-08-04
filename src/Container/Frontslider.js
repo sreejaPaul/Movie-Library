@@ -147,7 +147,7 @@ class Frontslider extends React.Component{
             <div className="frontsliderdiv" id="slider">
                 {sliderimage=[
                 
-                    <Link to={"/MovieDetail/" + this.state.now_playing_id} key={0}>
+                    <Link to={"/Movie-Library/MovieDetail/" + this.state.now_playing_id} key={0}>
                         <div className="slide" key={0}>  
                             <img src={this.state.now_playing_bgimg} alt={this.state.now_playing_title} className="bgimage"></img>      
                             <div className="titlecontent"> <h1>{"Ongoing Top Movie"} </h1></div> 
@@ -157,7 +157,7 @@ class Frontslider extends React.Component{
                             </div>
                         </div>
                     </Link>
-                ,   <Link to={"/MovieDetail/" + this.state.popular_id} key={1}>
+                ,   <Link to={"/Movie-Library/MovieDetail/" + this.state.popular_id} key={1}>
                         <div className="slide" key={1}>                  
                             <img src={this.state.popular_bgimg} alt={this.state.popular_title} className="bgimage"></img>             
                             <div className="titlecontent"> <h1>{"Most Popular Movie"} </h1></div> 
@@ -168,7 +168,7 @@ class Frontslider extends React.Component{
                         </div>
                     </Link>
                 ,
-                    <Link to={"/MovieDetail/" + this.state.top_rated_id} key={2}>
+                    <Link to={"/Movie-Library/MovieDetail/" + this.state.top_rated_id} key={2}>
                         <div className="slide" key={2}>                   
                             <img src={this.state.top_rated_bgimg} alt={this.state.top_rated_title} className="bgimage"></img>                             
                             <div className="titlecontent"> <h1>{"User's Choice"} </h1></div>  
@@ -179,7 +179,7 @@ class Frontslider extends React.Component{
                         </div>
                     </Link>
                 ,
-                    <Link to={"/MovieDetail/" + this.state.upcoming_id} key={3}>
+                    <Link to={"/Movie-Library/MovieDetail/" + this.state.upcoming_id} key={3}>
                         <div className="slide" key={3}> 
                             <img src={this.state.upcoming_bgimg} alt={this.state.upcoming_title} className="bgimage"></img>              
                             <div className="titlecontent"> <h1>{"Upcoming Movie"} </h1></div>  

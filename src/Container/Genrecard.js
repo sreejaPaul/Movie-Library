@@ -31,7 +31,7 @@ const Genrecard = ()=>{
             <div className="genre">
                 {genre.map((genre,i)=>{     
                     return(
-                        <Link to={"/Genre/"+ genre.name +"/" + genre.id} style={{textDecoration:"none",color: "inherit"}} key={genre.id}>
+                        <Link to={"/Movie-Library/Genre/"+ genre.name +"/" + genre.id} style={{textDecoration:"none",color: "inherit"}} key={genre.id}>
                             <button className="genrecard" key={genre.id}>
                                 
                                 <span id="genrename">{genre.name}</span>

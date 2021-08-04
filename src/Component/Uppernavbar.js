@@ -64,7 +64,7 @@ class Uppernavbar extends React.Component{
         return(
             <div id="titledivstyle" onClick={this.ondivclick}>
                 <div className="titlestyle">
-                    <Link to="/" id="titlelink">
+                    <Link to="/Movie-Library" id="titlelink">
                         <h2>Movie Library</h2>
                     </Link>
                 </div>
@@ -79,7 +79,7 @@ class Uppernavbar extends React.Component{
                 </div>              
                 
                 
-                {(this.state.searchtext !== "") ? <Redirect to={"/Search/" + this.state.searchtext}/> : ""}
+                {(this.state.searchtext !== "") ? <Redirect to={"/Movie-Library/Search/" + this.state.searchtext}/> : ""}
                 
             </div>
         );

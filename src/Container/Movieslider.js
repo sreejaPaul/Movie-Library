@@ -101,7 +101,7 @@ class Movieslider extends React.Component{
         return(
             <div>
                 <div className="movslider">
-                    <Link to={"/MovieList/top_rated"} className="movlink">
+                    <Link to={"/Movie-Library/MovieList/top_rated"} className="movlink">
                         <h2>TopRated Movies</h2>
                     </Link>
                     
@@ -109,7 +109,7 @@ class Movieslider extends React.Component{
                         {    this.state.TopRatedList.map(
                                 (movie,i)=>{
                                     return(
-                                        <Link to = {"/MovieDetail/"+ movie.id} className="link" key={movie.id}>
+                                        <Link to = {"/Movie-Library/MovieDetail/"+ movie.id} className="link" key={movie.id}>
                                             <Card 
                                                     key={movie.id} 
                                                     imagelinks={process.env.REACT_APP_IMAGE_WIDTH200  + movie.poster_path} 
@@ -127,7 +127,7 @@ class Movieslider extends React.Component{
                 </div>
 
                 <div className="movslider">
-                    <Link to={"/MovieList/now_playing"} className="movlink">
+                    <Link to={"/Movie-Library/MovieList/now_playing"} className="movlink">
                         <h2>In Theaters Now</h2>
                     </Link>
                     
@@ -135,7 +135,7 @@ class Movieslider extends React.Component{
                         {    this.state.NowplayingList.map(
                                 (movie,i)=>{
                                     return(
-                                        <Link to = {"/MovieDetail/"+ movie.id} className="link" key={movie.id}>
+                                        <Link to = {"/Movie-Library/MovieDetail/"+ movie.id} className="link" key={movie.id}>
                                             <Card 
                                                     key={movie.id} 
                                                     imagelinks={process.env.REACT_APP_IMAGE_WIDTH200  + movie.poster_path} 
@@ -153,7 +153,7 @@ class Movieslider extends React.Component{
                 </div>
 
                 <div className="movslider">
-                    <Link to={"/Movielist/popular"} className="movlink">
+                    <Link to={"/Movie-Library/Movielist/popular"} className="movlink">
                         <h2>Fan Favourites</h2>
                     </Link>
                     
@@ -161,7 +161,7 @@ class Movieslider extends React.Component{
                         {    this.state.PopularList.map(
                                 (movie,i)=>{
                                     return(
-                                        <Link to = {"/MovieDetail/"+ movie.id} className="link" key={movie.id}>
+                                        <Link to = {"/Movie-Library/MovieDetail/"+ movie.id} className="link" key={movie.id}>
                                             <Card 
                                                     key={movie.id} 
                                                     imagelinks={process.env.REACT_APP_IMAGE_WIDTH200  + movie.poster_path} 
@@ -179,7 +179,7 @@ class Movieslider extends React.Component{
                 </div>
 
                 <div className="movslider">
-                    <Link to={"/Movielist/upcoming"} className="movlink">
+                    <Link to={"/Movie-Library/Movielist/upcoming"} className="movlink">
                         <h2>Upcoming Movies</h2>
                     </Link>
                     
@@ -187,7 +187,7 @@ class Movieslider extends React.Component{
                         {    this.state.UpcomingList.map(
                                 (movie,i)=>{
                                     return(
-                                        <Link to = {"/MovieDetail/"+ movie.id} className="link" key={movie.id}>
+                                        <Link to = {"/Movie-Library/MovieDetail/"+ movie.id} className="link" key={movie.id}>
                                             <Card 
                                                     key={movie.id} 
                                                     imagelinks={process.env.REACT_APP_IMAGE_WIDTH200  + movie.poster_path} 

@@ -39,7 +39,7 @@ const Recomendation = (props)=>{
                                 (movie,i)=>{
                                     return(
                                         
-                                        <Link to = {"/MovieDetail/"+ movie.id} className="link" key={movie.id} >
+                                        <Link to = {"/Movie-Library/MovieDetail/"+ movie.id} className="link" key={movie.id} >
                                             <Card 
                                                     key={movie.id} 
                                                     imagelinks={process.env.REACT_APP_IMAGE_WIDTH200  + movie.poster_path} 

@@ -2,7 +2,7 @@
   "name": "movie-library",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://sreejaPaul.github.io/Movie-Library",
+  "homepage": "https://sreejaPaul.github.io/Movie-Library",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",

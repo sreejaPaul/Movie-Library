@@ -81,7 +81,7 @@ const Content = (props)=>{
                             {(props.genresname.length > 0)?
                             props.genresname.map((genre,i)=>{
                                 return(
-                                    <Link to={"/Genre/" + genre + "/" + props.genresid[i]} className="genrelink" key={genre}>
+                                    <Link to={"/Movie-Library/Genre/" + genre + "/" + props.genresid[i]} className="genrelink" key={genre}>
                                         <FontAwesomeIcon icon={faCompactDisc} size="xs"/>
                                         {" " +genre}
                                     </Link>
