@@ -53,11 +53,11 @@ class Frontslider extends React.Component{
         try{
             axios.get(now_playing)
             .then((datas)=>{
-
-                this.setState({now_playing_bgimg : img_basepath + datas.data.results[0].backdrop_path});
-                this.setState({now_playing_title: datas.data.results[0].title});
-                this.setState({now_playing_id : datas.data.results[0].id});
-                this.setState({now_playing_overview: datas.data.results[0].overview});
+                const moviearr = this.filtermovies(datas.data.results);
+                this.setState({now_playing_bgimg : img_basepath + moviearr[0].backdrop_path});
+                this.setState({now_playing_title: moviearr[0].title});
+                this.setState({now_playing_id : moviearr[0].id});
+                this.setState({now_playing_overview: moviearr[0].overview});
             })
         }catch(error){
             if(axios.isCancel(error)){
@@ -71,9 +71,8 @@ class Frontslider extends React.Component{
         try{
             axios.get(popular)
             .then((datas)=>{
-                
-                const moviearr = datas.data.results.filter((movie)=>(movie.id !== this.state.now_playing_id))
-                
+                const moviearr = this.filtermovies(datas.data.results);
+
                 this.setState({popular_bgimg : img_basepath + moviearr[0].backdrop_path});
                 this.setState({popular_title: moviearr[0].title});
                 this.setState({popular_id : moviearr[0].id});
@@ -93,7 +92,7 @@ class Frontslider extends React.Component{
         try{
             axios.get(top_rated)
             .then((datas)=>{
-                const moviearr = datas.data.results.filter((movie)=>(movie.id !== this.state.now_playing_id && movie.id !== this.state.popular_id ))
+                const moviearr = this.filtermovies(datas.data.results);
                 
                 this.setState({top_rated_bgimg : img_basepath + moviearr[0].backdrop_path});
                 this.setState({top_rated_title: moviearr[0].title});
@@ -114,7 +113,7 @@ class Frontslider extends React.Component{
             axios.get(upcoming)
             .then((datas)=>{
                 
-                const moviearr = datas.data.results.filter((movie)=>(movie.id !== this.state.now_playing_id && movie.id !== this.state.popular_id && movie.id !== this.state.top_rated_id ))
+                const moviearr = this.filtermovies(datas.data.results);
             
                 this.setState({upcoming_bgimg : img_basepath + moviearr[0].backdrop_path});
                 this.setState({upcoming_title: moviearr[0].title});
@@ -133,7 +132,12 @@ class Frontslider extends React.Component{
 
     }
 
-    
+    filtermovies = (movies)=>{
+        const moviearr = movies.filter((movie)=>
+            (movie.id !== this.state.now_playing_id && movie.id !== this.state.popular_id 
+                && movie.id !== this.state.top_rated_id && movie.id !== this.state.upcoming_id));
+        return moviearr;
+    }
 
 
     
@@ -143,17 +147,6 @@ class Frontslider extends React.Component{
             <div className="frontsliderdiv" id="slider">
                 {sliderimage=[
                 
-                    <Link to={"/MovieDetail/" + this.state.popular_id} key={1}>
-                        <div className="slide" key={1}>                  
-                            <img src={this.state.popular_bgimg} alt={this.state.popular_title} className="bgimage"></img>             
-                            <div className="titlecontent"> <h1>{"Most Popular Movie"} </h1></div> 
-                            <div className="content"> 
-                                <h1>{this.state.popular_title} </h1>
-                                <h5><p>{this.state.popular_overview}</p></h5>
-                            </div>
-                        </div>
-                    </Link>
-                ,
                     <Link to={"/MovieDetail/" + this.state.now_playing_id} key={0}>
                         <div className="slide" key={0}>  
                             <img src={this.state.now_playing_bgimg} alt={this.state.now_playing_title} className="bgimage"></img>      
@@ -161,6 +154,16 @@ class Frontslider extends React.Component{
                             <div className="content">
                                 <h1>{this.state.now_playing_title} </h1>
                                 <h5><p>{this.state.now_playing_overview}</p></h5>
+                            </div>
+                        </div>
+                    </Link>
+                ,   <Link to={"/MovieDetail/" + this.state.popular_id} key={1}>
+                        <div className="slide" key={1}>                  
+                            <img src={this.state.popular_bgimg} alt={this.state.popular_title} className="bgimage"></img>             
+                            <div className="titlecontent"> <h1>{"Most Popular Movie"} </h1></div> 
+                            <div className="content"> 
+                                <h1>{this.state.popular_title} </h1>
+                                <h5><p>{this.state.popular_overview}</p></h5>
                             </div>
                         </div>
                     </Link>

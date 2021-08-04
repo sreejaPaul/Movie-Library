@@ -65,7 +65,7 @@ const Searchmovie = ()=>{
                     );
                 })}
             </div>
-            {pageNumber !== 1 ?                
+            {(pageNumber > 1 )?                
                     <button id="prevbtn" onClick={onbtnclick}>
                         <FontAwesomeIcon icon={faArrowLeft}/>
                         {" page " + (pageNumber-1) + "  "}
