@@ -7,6 +7,7 @@ import {faArrowLeft ,faArrowRight,faHome} from '@fortawesome/free-solid-svg-icon
 
 const Searchmovie = ()=>{
     const[movie,setmovie] = useState([]);
+    const [upcoming, setUpcoming] = useState([]);
     const[pageNumber,setpageno] = useState(1);
     const search = useParams().SearchItem;
 
@@ -32,6 +33,28 @@ const Searchmovie = ()=>{
     },[search,pageNumber]);
     
     useEffect(() => {
+        try {
+            axios.get(process.env.REACT_APP_SEARCH_FIRSTPART
+                + search
+                + process.env.REACT_APP_SEARCH_SECONDPART
+                + process.env.REACT_APP_API_KEY
+                + process.env.REACT_APP_SEARCH_THIRDPART
+                + (pageNumber + 1)
+                + process.env.REACT_APP_SEARCH_FOURTHPART)
+                .then((datas) => {
+                    setUpcoming(datas.data.results);
+                })
+        } catch (error) {
+            if (axios.isCancel(error)) {
+                console.log("Cancelled");
+            } else {
+                throw error;
+            }
+        }
+    }, [search, pageNumber]);
+
+    
+    useEffect(() => {
         window.scrollTo(0, 0)
     }, [pageNumber])
 
@@ -43,13 +66,17 @@ const Searchmovie = ()=>{
     
     return(
         <div style={{overflow:"hidden"}}>
-            <h1>{"Related Movies"}</h1>
-            <Link to="/Movie-Library" style={{textDecoration:"none",color:"inherit"}}>
-                    <button style={{border:"none",backgroundColor:"white",float:"right"}}>
-                        <FontAwesomeIcon icon={faHome} size="2x" id="homebutton"/>
-                    </button>
-                
-            </Link>
+            <div style={{ display: "flex" }}>
+                <div style={{ flex: "1" }}><h1>{"Related Movies"}</h1></div>
+                <div>
+                    <Link to="/Movie-Information" style={{ textDecoration: "none", color: "inherit" }}>
+                        <button style={{ border: "none", backgroundColor: "white", float: "right",marginTop:"25px"}}>
+                            <FontAwesomeIcon icon={faHome} size="2x" id="homebutton" />
+                        </button>
+
+                    </Link>
+                </div>
+            </div>
             <div style={{margin:"20px"}}>
                 {movie.map((movie)=>{
                     return(
@@ -65,17 +92,22 @@ const Searchmovie = ()=>{
                     );
                 })}
             </div>
-            {(pageNumber > 1 )?                
-                    <button id="prevbtn" onClick={onbtnclick}>
-                        <FontAwesomeIcon icon={faArrowLeft}/>
-                        {" page " + (pageNumber-1) + "  "}
-                        
-                    </button>
-                    : ""}
-                <button id="nextbtn" onClick={onbtnclick}>
-                    {" page " + (pageNumber+1) + "  "}
-                    <FontAwesomeIcon icon={faArrowRight}/>
-                </button>
+            {(movie.length > 0) ?
+                (<>
+                    {(pageNumber > 1) ?
+                        <button id="prevbtn" onClick={onbtnclick}>
+                            <FontAwesomeIcon icon={faArrowLeft} />
+                            {" page " + (pageNumber - 1) + "  "}
+
+                        </button>
+                        : ""}
+                    {(upcoming.length > 0) ?
+                        <button id="nextbtn" onClick={onbtnclick}>
+                            {" page " + (pageNumber + 1) + "  "}
+                            <FontAwesomeIcon icon={faArrowRight} />
+                        </button> : ""}
+                </>
+                ) : ("No More Data Found")}
             
         </div>
     );
